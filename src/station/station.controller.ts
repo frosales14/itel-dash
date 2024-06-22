@@ -31,4 +31,14 @@ export class StationController {
   createAnyoneHome() {
     return this.stationService.createAnyoneHStations();
   }
+
+  @Post('/henry-shein-seed')
+  createHenryShein() {
+    return this.stationService.createHenrySchein();
+  }
+
+  @Post('/goal-seed')
+  createGoal() {
+    return this.stationService.createGoalsStations();
+  }
 }

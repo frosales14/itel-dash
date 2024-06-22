@@ -1,11 +1,17 @@
-import { IsEmail, MinLength, IsString, IsArray } from 'class-validator';
+import {
+  IsEmail,
+  MinLength,
+  IsString,
+  IsArray,
+  IsOptional,
+} from 'class-validator';
 
 export class CreateEmployeeDto {
   @IsString()
   name: string;
   @IsEmail()
   email: string;
-  @MinLength(6)
+  @IsOptional()
   password: string;
   @IsString()
   employee_id: string;
@@ -14,6 +20,7 @@ export class CreateEmployeeDto {
   @IsString()
   contact_phone: string;
   @IsString()
+  @IsOptional()
   birth_date: Date;
   @IsString({ each: true })
   @IsArray()

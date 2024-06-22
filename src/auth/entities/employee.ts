@@ -9,7 +9,7 @@ export class Employee {
   name: string;
   @Prop({ unique: true, required: true })
   email: string;
-  @Prop({ minlength: 6, required: true })
+  @Prop({ required: true })
   password?: string;
   @Prop({ default: true })
   isActive: boolean;
@@ -19,7 +19,7 @@ export class Employee {
   gender: string;
   @Prop({ required: true })
   contact_phone: string;
-  @Prop({ required: true })
+  @Prop({ required: false })
   birth_date: Date;
 }
 

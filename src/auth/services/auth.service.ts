@@ -28,6 +28,8 @@ export class AuthService {
 
   async create(createEmployeeDto: CreateEmployeeDto): Promise<Employee> {
     try {
+      createEmployeeDto.password = 'Itel*2024';
+      createEmployeeDto.birth_date = new Date();
       const { password, ...employeeData } = createEmployeeDto;
 
       const newEmployee = new this.employeeModel({
@@ -84,14 +86,16 @@ export class AuthService {
   }
 
   async findById(id: string) {
-    const student = await this.employeeModel.findById(id);
+    const student = await this.employeeModel.findById(id).select('-password');
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { password: _, ...rest } = student.toJSON();
-    return rest;
+
+    return student;
   }
 
   async findAll(): Promise<Employee[]> {
-    return await this.employeeModel.find();
+    return await this.employeeModel
+      .find()
+      .select('-password -gender -birth_date');
   }
 
   // async findOne(id: string) {
@@ -102,8 +106,16 @@ export class AuthService {
   //   }
   // }
 
-  update(id: number, updateAuthDto: UpdateAuthDto) {
-    return `This action updates a #${id} auth`;
+  async update(id: string, updateAuthDto: UpdateAuthDto) {
+    const updatedUSer = await this.employeeModel.findByIdAndUpdate(
+      id,
+      updateAuthDto,
+      {
+        new: true,
+      },
+    );
+
+    return updatedUSer;
   }
 
   remove(id: number) {

@@ -10,6 +10,7 @@ import { StationModule } from './station/station.module';
 import { StorageRoomModule } from './storage-room/storage-room.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { MapsModule } from './maps/maps.module';
+import { ProyectModule } from './proyect/proyect.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -22,6 +23,7 @@ import { MapsModule } from './maps/maps.module';
     StorageRoomModule,
     DashboardModule,
     MapsModule,
+    ProyectModule,
   ],
   controllers: [],
   providers: [],

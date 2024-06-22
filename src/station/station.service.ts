@@ -43,6 +43,48 @@ export class StationService {
     mongoose.connection.close();
   }
 
+  async createGoalsStations() {
+    const stations = [];
+    for (let index = 1; index < 52; index++) {
+      let number = index < 10 ? '00' : index < 100 ? '0' : '';
+      number += index;
+      const newStation = {
+        number: number,
+        campaign: '666dec8a28bc49b423ebc72d',
+        rol: 'agent',
+        status: 'operate',
+        periferals: false,
+        internet: false,
+        macAddress: 'not set',
+        hostname: 'not set',
+      };
+      stations.push(newStation);
+    }
+    await this.stationModel.insertMany(stations);
+    mongoose.connection.close();
+  }
+
+  async createHenrySchein() {
+    const stations = [];
+    for (let index = 1; index < 118; index++) {
+      let number = index < 10 ? '00' : index < 100 ? '0' : '';
+      number += index;
+      const newStation = {
+        number: number,
+        campaign: '666dec7e28bc49b423ebc72b',
+        rol: 'agent',
+        status: 'operate',
+        periferals: false,
+        internet: false,
+        macAddress: 'not set',
+        hostname: 'not set',
+      };
+      stations.push(newStation);
+    }
+    await this.stationModel.insertMany(stations);
+    mongoose.connection.close();
+  }
+
   async create(createStationDto: CreateStationDto) {
     try {
       const newStation = new this.stationModel({

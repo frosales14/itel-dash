@@ -7,7 +7,7 @@ import { Product } from 'src/product/entities/product.entity';
 @Schema()
 export class Station {
   _id?: string;
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true })
   number: string;
   @Prop({
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: Campaign.name }],

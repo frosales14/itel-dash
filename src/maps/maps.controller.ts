@@ -25,9 +25,24 @@ export class MapsController {
     return this.mapsService.createAnyoneHomeMap();
   }
 
+  @Post('/create/henry-shein')
+  createHenrySheinMap() {
+    return this.mapsService.createHenrySheinMap();
+  }
+
+  @Post('/create/goals')
+  createGoals() {
+    return this.mapsService.createGoalMap();
+  }
+
   @Get('/anyone-home')
   getAnyoneHomeMap() {
     return this.mapsService.findByCampaign('Anyone Home');
+  }
+
+  @Get('/henry-shein')
+  getHenrySheinMap() {
+    return this.mapsService.findByCampaign('666dec7e28bc49b423ebc72b');
   }
 
   @Get()
@@ -37,7 +52,7 @@ export class MapsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.mapsService.findOne(+id);
+    return this.mapsService.findByCampaign(id);
   }
 
   @Patch(':id')
