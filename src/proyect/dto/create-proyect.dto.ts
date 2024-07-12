@@ -13,4 +13,8 @@ export class CreateProyectDto {
   @IsString()
   @IsOptional()
   status: string;
+
+  @IsArray()
+  @IsOptional()
+  activities: string[];
 }

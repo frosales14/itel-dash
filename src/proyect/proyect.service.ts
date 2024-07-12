@@ -13,10 +13,8 @@ export class ProyectService {
   ) {}
 
   create(createProyectDto: CreateProyectDto) {
-    console.log(createProyectDto);
-
     const newProyect = new this.proyectModel({ ...createProyectDto });
-    console.log(newProyect);
+
     try {
       newProyect.save();
     } catch (error) {}
@@ -26,15 +24,25 @@ export class ProyectService {
     return this.proyectModel.find().populate('user', ' name _id email');
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} proyect`;
+  findOne(id: string) {
+    return this.proyectModel.findById(id).populate('user', ' name _id email');
   }
 
-  update(id: number, updateProyectDto: UpdateProyectDto) {
-    return `This action updates a #${id} proyect`;
+  async findActivitiesbyID(id: string) {
+    const proectWithActivities = await this.proyectModel
+      .findById(id)
+      .populate('activities', '_id name description responsible status');
+
+    return proectWithActivities.activities;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} proyect`;
+  async update(id: string, updateProyectDto: UpdateProyectDto) {
+    const updatedProyect = await this.proyectModel.findByIdAndUpdate(
+      id,
+      updateProyectDto,
+      { new: true },
+    );
+
+    return updatedProyect;
   }
 }

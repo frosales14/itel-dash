@@ -4,6 +4,8 @@ import { ProyectController } from './proyect.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Proyect, ProyectSchema } from './entities/proyect.entity';
 import { Employee, EmployeeSchema } from 'src/auth/entities/employee';
+import { Activity } from 'src/activities/entities/activity.entity';
+import { ActivitiesSchema } from '../activities/entities/activity.entity';
 
 @Module({
   controllers: [ProyectController],
@@ -19,6 +21,12 @@ import { Employee, EmployeeSchema } from 'src/auth/entities/employee';
       {
         name: Employee.name,
         schema: EmployeeSchema,
+      },
+    ]),
+    MongooseModule.forFeature([
+      {
+        name: Activity.name,
+        schema: ActivitiesSchema,
       },
     ]),
   ],

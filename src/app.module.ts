@@ -11,6 +11,7 @@ import { StorageRoomModule } from './storage-room/storage-room.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { MapsModule } from './maps/maps.module';
 import { ProyectModule } from './proyect/proyect.module';
+import { ActivitiesModule } from './activities/activities.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -24,6 +25,7 @@ import { ProyectModule } from './proyect/proyect.module';
     DashboardModule,
     MapsModule,
     ProyectModule,
+    ActivitiesModule,
   ],
   controllers: [],
   providers: [],
